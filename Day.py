@@ -26,8 +26,8 @@ class Day:
     # input: time of day
     # returns list of items (event types) that are most to least frequent during that time; removes duplicates
     def common (self, time):
-        a = self.time_slots[time]
-        counts = collections.Counter(a)
+        timeArray = self.time_slots[time]
+        counts = collections.Counter(timeArray)
         sortedEvents = []
         for k in sorted(counts, key=counts.__getitem__, reverse=True):
             sortedEvents.extend([k for _ in range(counts[k])])
@@ -36,5 +36,5 @@ class Day:
         for item in sortedEvents:
             if item not in sortedEvents_new: sortedEvents_new.append(item)
 
-        # print (sortedEvents_new)
+        return sortedEvents_new
 
