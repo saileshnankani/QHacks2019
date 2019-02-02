@@ -1,3 +1,5 @@
+import datetime
+
 """
 A class to store an Event and its information.
 """
@@ -6,10 +8,18 @@ class Event:
     """
     An event with a type (homework, assignment) and an dict of time slots
     with the key being the Day, and the value being an array time slots.
+    >>> test_deadline = datetime.datetime(2019, 1, 21, 14, 30)
+    >>> Adrian_event = Event("Assignment", test_deadline, 4.5 )
     """
-    def __init__(self, type, time_slots):
+    def __init__(self, type, deadline, duration):
         self.type = type
-        self.time_slots = time_slots
+        self.time_slots = {}
+        self.deadline = deadline
+        self.duration = duration
 
+
+
+
+test = datetime.datetime(2019, 1, 21, 3, 30)
 
 
