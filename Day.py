@@ -8,32 +8,3 @@ class Day:
                            '7:00am': [], '7:00pm': [], '7:30am': [], '7:30pm': [], '8:00am': [], '8:00pm': [], '8:30am': [], '8:30pm': [],
                            '9:00am': [], '9:00pm': [], '9:30am': [], '9:30pm': [], '10:00am': [], '10:00pm': [], '10:30am': [], '10:30pm': [],
                            '11:00am': [], '11:00pm': [], '11:30am': [], '11:30pm': [], '12:00am': [], '12:00pm': [], '12:30am': [], '12:30pm': []}
-
-
-
-def output_dict():
-    i = 1
-    dict_output = {}
-    string = ""
-    string2 = ""
-    string3 = ""
-    string4 = ""
-    while i < 13:
-        string = string + str(i)  + ":00am"
-        string2 = string2 + str(i) + ":00pm"
-        string3 = string3 + str(i) + ":30am"
-        string4 = string4 + str(i) + ":30am"
-        dict_output[string] = []
-        dict_output[string2] = []
-        dict_output[string3] = []
-        dict_output[string4] = []
-        string = ""
-        string2 = ""
-        string3 = ""
-        string4 = ""
-        i += 1
-    print(dict_output)
-    return dict_output
-
-
-output_dict()
