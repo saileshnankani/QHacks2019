@@ -11,8 +11,8 @@ class Event:
     >>> test_deadline = datetime.datetime(2019, 1, 21, 14, 30) # date is year, month, day, hour, minute
     >>> Adrian_event = Event("Assignment", test_deadline, 4.5)
     """
-    def __init__(self, type, deadline, duration):
-        self.type = type
+    def __init__(self, _type, deadline, duration):
+        self.type = _type
         self.time_slots = {}
         self.deadline = deadline
         self.duration = duration
