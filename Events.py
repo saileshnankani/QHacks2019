@@ -17,3 +17,4 @@ class Event:
         self.deadline = deadline
         self.duration = duration
 
+

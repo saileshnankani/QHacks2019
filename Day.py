@@ -1,3 +1,15 @@
+class Week:
+
+    def __init_(self):
+        self.Monday = Day("Monday")
+        self.Tuesday = Day("Tuesday")
+        self.Wednesday = Day("Wednesday")
+        self.Thursday = Day("Thursday")
+        self.Friday = Day("Friday")
+        self.Saturday = Day("Saturday")
+        self.Sunday = Day("Sunday")
+
+
 class Day:
 
     def __init__(self, day):
@@ -8,3 +20,5 @@ class Day:
                            '7:00': [], '19:00': [], '7:30': [], '19:30': [], '8:00': [], '20:00': [], '8:30': [], '20:30': [],
                            '9:00': [], '21:00': [], '9:30': [], '21:30': [], '10:00': [], '22:00': [], '10:30': [], '22:30': [],
                            '11:00': [], '23:00': [], '11:30': [], '23:30': [], '12:00': [], '00:00': [], '12:30': [], '00:30': []}
+
+
