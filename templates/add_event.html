@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/stylesheet.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="background-color: #5EB044">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Add Event</a>
+        <a href="#">Settings</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+    </div>
+    <div style="display: table;  height: 40px;" onclick="openNav()">
+        <div style="padding-left:20px; width: fit-content; color:white; font-size: 16px; display: table-cell; vertical-align: middle;">
+            &#9776; Turtle Scheduling
+        </div>
+    </div>
+{#<span style="font-size:16px; height: 40px; padding-left: 2%; display: inline-block; color: white; cursor:pointer" onclick="openNav()">&#9776; Turtle Scheduling</span>#}
+<script>
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "150px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</div>
+
+
+
+<div style="align-content: center; align-items: center; text-align:center; height: calc(100% - 80px); padding-top: 30%;" >
+    <form action="{{ url_for(".process_event") }}" method="POST">
+        <input name="category" id="category" type="text" placeholder="Category"> <br>
+        Deadline Date: <input name="date" id="date" type="date"> Time:<input type="time" name="time" /> <br>
+        <input name="duration" id="duration" title="duration" type="text" placeholder="Duration (Optional)"> <br>
+        <input type="submit" value="Submit">
+    </form>
+
+{#    <script>#}
+{#        function myFunction() {#}
+{#          var x = document.getElementById("mySelect").value;#}
+{#          if (x === "Meeting") {#}
+{#              document.getElementById("test").innerHTML = "Let your contact know your scheduled meeting time!";#}
+{#                document.getElementById("test1").style.visibility = "visible";#}
+{#                document.getElementById("test").style.visibility = "visible";#}
+{#          } else {#}
+{#              document.getElementById("test").style.visibility = "hidden";#}
+{#              document.getElementById("test1").style.visibility = "hidden";#}
+{#          }#}
+{#        }#}
+{#    </script>#}
+</div>
+</body>
+</html>
