@@ -134,19 +134,17 @@ def main(type, deadline):
 
     # ESTIMATE AMOUNT OF TIME
 
-    # result_duration = need from database                         1
+    # TODO: result_duration = need from database  (1 is equivalent to 30 min)                       1
 
-    result_duration = 30
+    result_duration = 1
 
     # FIND SPACE ON CALENDAR
 
     # find frequency
     weekday = today.weekday()
-    weekday_to_time_slot = {0: sunday, 1: monday, 2: tuesday, 3: wednesday, 4:thursday, 5: friday, 6: saturday, 7: sunday}
+    weekday_to_time_slot = {0: sunday, 1: monday, 2: tuesday, 3: wednesday, 4: thursday, 5: friday, 6: saturday, 7: sunday}
     current_day = today
-    week_best_schedule = []
     best_ones = []
-    weekly_ = []
 
     for i in range(7):
         # for each of the 48 spots / duration number of times in i, get a counter for the event we are looking for
@@ -157,7 +155,7 @@ def main(type, deadline):
             total_in_duration = 0
 
             for n in loop_count:
-                counts = collections.Counter(weekday_to_time_slot[i][n+p])
+                counts = collections.Counter(weekday_to_time_slot[weekday][n+p])
                 sortedEvents = []
                 for k in sorted(counts, key=counts.__getitem__, reverse=True):
                     sortedEvents.extend([k for _ in range(counts[k])])
@@ -169,9 +167,11 @@ def main(type, deadline):
 
                 total_in_duration = total_in_duration + counts[0]   # add frequency of the most popular item
 
-            weekday = weekday+1
-            weekday = weekday%7
+
+        best_ones.append(frequency, current_day)
         current_day = today+timedelta(days=1)
+        weekday = weekday + 1
+        weekday = weekday % 7
 
     max = 0
     max_datetime_frequency = ()
@@ -181,15 +181,7 @@ def main(type, deadline):
             max_datetime_frequency = datetime_frequency_value
             max = datetime_frequency_value[1]
 
+     # TODO: update database here
+     # TODO: update the calendar                                          2 : maintain sort
+
     return max_datetime_frequency[0], result_duration
-
-
-
-
-
-
-    # Compare the ones in the next week in terms of frequency from the list and then update the calendar
-
-    # update the calendar                                          2 : maintain sort
-
-    # result_datetime = datetime(2019, 5, 1, 15, 00)               3
