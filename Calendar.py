@@ -1,9 +1,21 @@
 from _datetime import datetime
 from Events import Event
+from Models import Week
+from Models import Day
 
-calendar = []
+
+class Calendar:
+    def __init__(self):
+        self.week1 = Week()
+        self.week2 = Week()
+        self.week3 = Week()
+        self.week4 = Week()
+        self.week5 = Week()
 
 # -- pre-populated data --
+
+
+calendar = Calendar()
 
 firstHomework = Event("Homework", datetime(2019, 1, 4, 15, 30), 30)
 secondHomework = Event("Homework", datetime(2019, 1, 6, 12, 00), 60)
@@ -12,75 +24,69 @@ fourthHomework = Event("Homework", datetime(2019, 1, 11, 15, 20), 30)
 fifthHomework = Event("Homework", datetime(2019, 1, 13, 12, 00), 60)
 sixthHomework = Event("Homework", datetime(2019, 1, 15, 15, 30), 30)
 
-calendar.append(firstHomework)
-calendar.append(secondHomework)
-calendar.append(thirdHomework)
-calendar.append(fourthHomework)
-calendar.append(fifthHomework)
-calendar.append(sixthHomework)
+calendar.week1.test
+calendar.week1.Friday.time_slots.append(firstHomework)
+calendar.week2.Sunday.time_slots.append(secondHomework)
+calendar.week2.Tuesday.time_slots.append(thirdHomework)
+calendar.week2.Friday.time_slots.append(fourthHomework)
+calendar.week3.Sunday.time_slots.append(fifthHomework)
+calendar.week3.Tuesday.time_slots.append(sixthHomework)
 
-firstMeeting = Event("Meeting", datetime(2019, 1, 5, 9, 30), 30)
-secondMeeting = Event("Meeting", datetime(2019, 1, 7, 16, 00), 90)
-thirdMeeting = Event("Meeting", datetime(2019, 1, 12, 9, 30), 30)
-fourthMeeting = Event("Meeting", datetime(2019, 1, 14, 16, 00), 90)
-fifthMeeting = Event("Meeting", datetime(2019, 1, 19, 9, 30), 30)
-sixthMeeting = Event("Meeting", datetime(2019, 1, 21, 16, 00), 90)
+firstTestPrep = Event("TestPrep", datetime(2019, 1, 5, 19, 00), 30)
+secondTestPrep = Event("TestPrep", datetime(2019, 1, 7, 14, 30), 60)
+thirdTestPrep = Event("TestPrep", datetime(2019, 1, 4, 19, 00), 30)
+fourthTestPrep = Event("TestPrep", datetime(2019, 1, 6, 14, 30), 60)
+fifthTestPrep = Event("TestPrep", datetime(2019, 1, 8, 15, 30), 30)
 
-calendar.append(firstMeeting)
-calendar.append(secondMeeting)
-calendar.append(thirdMeeting)
-calendar.append(fourthMeeting)
-calendar.append(fifthMeeting)
-calendar.append(sixthMeeting)
+calendar.week1.Friday.time_slots.append(firstTestPrep)
+calendar.week1.Saturday.time_slots.append(secondTestPrep)
+calendar.week2.Sunday.time_slots.append(thirdTestPrep)
+calendar.week2.Monday.time_slots.append(fourthTestPrep)
+calendar.week2.Tuesday.time_slots.append(fifthTestPrep)
 
-firstTestPrep = Event("TestPrep", datetime(2019, 1, 18, 19, 00), 30)
-secondTestPrep = Event("TestPrep", datetime(2019, 1, 20, 14, 30), 60)
-thirdTestPrep = Event("TestPrep", datetime(2019, 1, 22, 19, 00), 30)
-fourthTestPrep = Event("TestPrep", datetime(2019, 1, 25, 14, 30), 60)
-fifthTestPrep = Event("TestPrep", datetime(2019, 1, 27, 15, 30), 30)
+firstErrand = Event("Errands", datetime(2019, 1, 9, 17, 00), 30)
+secondErrand = Event("Errands", datetime(2019, 1, 10, 17, 00), 30)
+thirdErrand = Event("Errands", datetime(2019, 1, 11, 17, 00), 30)
+fourthErrand = Event("Errands", datetime(2019, 1, 12, 17, 00), 30)
 
-calendar.append(firstTestPrep)
-calendar.append(secondTestPrep)
-calendar.append(thirdTestPrep)
-calendar.append(fourthTestPrep)
-calendar.append(fifthTestPrep)
+calendar.week2.Wednesday.time_slots.Tuesday.append(firstErrand)
+calendar.week2.Thursday.time_slots.append(secondErrand)
+calendar.week2.Friday.time_slots.append(thirdErrand)
+calendar.week2.Saturday.time_slots.append(fourthErrand)
 
-firstErrand = Event("Errands", datetime(2019, 1, 19, 17, 00), 30)
-secondErrand = Event("Errands", datetime(2019, 1, 21, 17, 00), 30)
-thirdErrand = Event("Errands", datetime(2019, 1, 26, 17, 00), 30)
-fourthErrand = Event("Errands", datetime(2019, 1, 28, 17, 00), 30)
+firstProject = Event("Projects", datetime(2019, 1, 6, 17, 00), 90)
+secondProject = Event("Projects", datetime(2019, 1, 7, 11, 00), 180)
+thirdProject = Event("Projects", datetime(2019, 1, 8, 17, 00), 90)
+fourthProject = Event("Projects", datetime(2019, 1, 9, 11, 00), 180)
+fifthProject = Event("Projects", datetime(2019, 1, 10, 17, 00), 90)
+sixthProject = Event("Projects", datetime(2019, 1, 11, 11, 00), 180)
 
-calendar.append(firstErrand)
-calendar.append(secondErrand)
-calendar.append(thirdErrand)
-calendar.append(fourthErrand)
+calendar.week2.Sunday.time_slots.append(firstHomework)
+calendar.week2.Monday.time_slots.append(secondHomework)
+calendar.week2.Tuesday.time_slots.append(thirdHomework)
+calendar.week2.Wednesday.time_slots.append(fourthHomework)
+calendar.week2.Thursday.time_slots.append(fifthHomework)
+calendar.week2.Friday.time_slots.append(sixthHomework)
 
-firstProject = Event("Projects", datetime(2019, 1, 18, 17, 00), 90)
-secondProject = Event("Projects", datetime(2019, 1, 20, 11, 00), 180)
-thirdProject = Event("Projects", datetime(2019, 1, 26, 17, 00), 90)
-fourthProject = Event("Projects", datetime(2019, 1, 28, 11, 00), 180)
-fifthProject = Event("Projects", datetime(2019, 1, 15, 17, 00), 90)
-sixthProject = Event("Projects", datetime(2019, 1, 13, 11, 00), 180)
+firstStudying = Event("Studying", datetime(2019, 1, 6, 17, 00), 90)
+secondStudying = Event("Studying", datetime(2019, 1, 7, 11, 00), 30)
+thirdStudying = Event("Studying", datetime(2019, 1, 8, 17, 00), 90)
+fourthStudying = Event("Studying", datetime(2019, 1, 9, 11, 00), 30)
+fifthStudying = Event("Studying", datetime(2019, 1, 10, 17, 00), 90)
+sixthStudying = Event("Studying", datetime(2019, 1, 11, 11, 00), 30)
 
-calendar.append(firstHomework)
-calendar.append(secondHomework)
-calendar.append(thirdHomework)
-calendar.append(fourthHomework)
-calendar.append(fifthHomework)
-calendar.append(sixthHomework)
-
-firstStudying = Event("Studying", datetime(2019, 1, 19, 17, 00), 90)
-secondStudying = Event("Studying", datetime(2019, 1, 21, 11, 00), 30)
-thirdStudying = Event("Studying", datetime(2019, 1, 26, 17, 00), 90)
-fourthStudying = Event("Studying", datetime(2019, 1, 28, 11, 00), 30)
-fifthStudying = Event("Studying", datetime(2019, 1, 17, 17, 00), 90)
-sixthStudying = Event("Studying", datetime(2019, 1, 15, 11, 00), 30)
-
-calendar.append(firstStudying)
-calendar.append(secondStudying)
-calendar.append(thirdStudying)
-calendar.append(fourthStudying)
-calendar.append(fifthStudying)
-calendar.append(sixthStudying)
+calendar.week2.Sunday.time_slots.append(firstStudying)
+calendar.week2.Monday.time_slots.append(secondStudying)
+calendar.week2.Tuesday.time_slots.append(thirdStudying)
+calendar.week2.Wednesday.time_slots.append(fourthStudying)
+calendar.week2.Thursday.time_slots.append(fifthStudying)
+calendar.week2.Friday.time_slots.append(sixthStudying)
 
 # -- end of pre-populated data --
+
+day = Day('Monday')
+day.time_slots = {1.0: ["Homework", "Homework", "Meeting", "Studying", "Homework", "Meeting"]}
+day.commonEvents(1.0)
+
+
+

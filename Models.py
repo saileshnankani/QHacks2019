@@ -1,4 +1,18 @@
 import collections
+from Events import Event
+from _datetime import datetime
+
+EPSILON = 0.005
+
+
+class Calendar:
+    def __init__(self):
+        self.week1 = Week()
+        self.week2 = Week()
+        self.week3 = Week()
+        self.week4 = Week()
+        self.week5 = Week()
+
 
 class Week:
 
@@ -10,6 +24,7 @@ class Week:
         self.Friday = Day("Friday")
         self.Saturday = Day("Saturday")
         self.Sunday = Day("Sunday")
+        self.test = "test"
 
 
 class Day:
@@ -48,29 +63,64 @@ class Day:
 
     # input: event type
     # output: returns list of time lists that are most common for the event type
-    def commonTime (self, eventType) :
+    def commonTime (self, eventType):
         bestTimes = []
 
         for timeList in self.time_slots :
-            if eventType.equals((self.time_slots[timeList][0])):
+            if eventType == (self.time_slots[timeList][0]):
                 if timeList not in bestTimes: bestTimes.append(timeList)
 
         return bestTimes
 
     # input: duration of event, and list of optimal times
     # output: returns list of times that cover the duration of event
-    def timeBlock (self, duration, bestTimes) :
+    def timeBlock (self, duration, bestTimes):
         goodTimes = []
-        timeUnits = duration / 30.0
+        timeUnits = duration / 30
         i = 0
+        while (i < 48) : #loops through all times
+            a = 0
 
-        while (i <= 48) : #loops through all times
-            a = 0.0
+            while (a < timeUnits and a < len(bestTimes)) :
 
-            while (a <= timeUnits) :
-                if (i == bestTimes[i+a]) :
+                if i == bestTimes[a]:
                     goodTimes.append(i)
                 a = a + 1
 
             i = i + 0.5
         return goodTimes
+
+
+calendar = Calendar()
+
+firstMeeting = Event("Meeting", datetime(2019, 1, 4, 15, 30), 30)
+secondHomework = Event("Homework", datetime(2019, 1, 6, 12, 00), 60)
+thirdHomework = Event("Homework", datetime(2019, 1, 8, 15, 30), 30)
+fourthHomework = Event("Homework", datetime(2019, 1, 11, 15, 20), 30)
+fifthHomework = Event("Homework", datetime(2019, 1, 13, 12, 00), 60)
+sixthHomework = Event("Homework", datetime(2019, 1, 15, 15, 30), 30)
+
+monday = Day('Monday')
+tuesday = Day('Tuesday')
+wednesday = Day('Wednesday')
+thursday = Day('Thursday')
+friday = Day('Friday')
+saturday = Day('Saturday')
+sunday = Day("Sunday")
+
+
+
+monday.time_slots = {1.0: ["Meeting", "Studying", "Homework", "Meeting","Homework", "Homework"], 13.5: ["Studying", "Studying", "Stuyding", "Projects", "Errands"]}
+tuesday.time_slots = {12.0: ["Meeting", "Errands", "Errands", "Errands", "Errands", "Meeting"], 13.5: ["TestPrep", "TestPrep", "TestPrep", "Projects", "Errands"]}
+wednesday.time_slots = {1.0: ["Meeting", "Meeting", "Meeting", "Meeting","Homework", "Homework"], 13.5: ["Studying", "Studying", "Stuyding", "Projects", "Errands"]}
+thursday.time_slots = {1.0: ["Meeting", "Studying", "Homework", "Meeting","Homework", "Homework"], 13.5: ["Studying", "Studying", "Stuyding", "Projects", "Errands"]}
+friday.time_slots = {1.0: ["Meeting", "Studying", "Homework", "Meeting","Homework", "Homework"], 13.5: ["Studying", "Studying", "Stuyding", "Projects", "Errands"]}
+
+days = [monday,tuesday,wednesday,thursday,friday]
+
+for daysingular in days:
+    print(daysingular.timeBlock(firstMeeting.duration, daysingular.commonTime("Meeting")))
+
+
+
+
