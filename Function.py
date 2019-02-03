@@ -1,5 +1,8 @@
 from _datetime import datetime
+from datetime import timedelta
 from Events import Event
+import collections
+
 
 calendar = []
 
@@ -136,18 +139,38 @@ def main(type, deadline):
     # FIND SPACE ON CALENDAR
 
     # find frequency
-    current = today.weekday()
+    weekday = today.weekday()
     weekday_to_time_slot = {0: sunday, 1: monday, 2: tuesday, 3: wednesday, 4:thursday, 5: friday, 6: saturday, 7: sunday}
+    current_day = today
     week_best_schedule = []
+    best_ones = []
+    weekly_ = []
 
-    for i in 7:
+    for i in range(7):
         # for each of the 48 spots / duration number of times in i, get a counter for the event we are looking for
         # and check which ones are available. Save the best duration (so time + duration) in a list
         for p in 48/result_duration:
+            loop_count = result_duration/30
 
-        weekday_to_time_slot[i]
-        current = current+1
-        current = current%7
+            total_in_duration = 0
+
+            for n in loop_count:
+                counts = collections.Counter(weekday_to_time_slot[i][n+p])
+                sortedEvents = []
+                for k in sorted(counts, key=counts.__getitem__, reverse=True):
+                    sortedEvents.extend([k for _ in range(counts[k])])
+
+                sortedEvents_new = []
+                for item in sortedEvents:
+                    if item not in sortedEvents_new:
+                        sortedEvents_new.append(item)
+
+                total_in_duration = total_in_duration + counts[0]   # add frequency of the most popular item
+
+            weekday = weekday+1
+            weekday = weekday%7
+        current_day = today+1
+
 
     # Compare the ones in the next week in terms of frequency from the list and then update the calendar
 
