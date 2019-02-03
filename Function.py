@@ -136,6 +136,8 @@ def main(type, deadline):
 
     # result_duration = need from database                         1
 
+    result_duration = 30
+
     # FIND SPACE ON CALENDAR
 
     # find frequency
@@ -169,12 +171,25 @@ def main(type, deadline):
 
             weekday = weekday+1
             weekday = weekday%7
-        current_day = today+1
+        current_day = today+timedelta(days=1)
+
+    max = 0
+    max_datetime_frequency = ()
+
+    for datetime_frequency_value in best_ones:
+        if datetime_frequency_value[1] > max:
+            max_datetime_frequency = datetime_frequency_value
+            max = datetime_frequency_value[1]
+
+    return max_datetime_frequency[0], result_duration
+
+
+
+
 
 
     # Compare the ones in the next week in terms of frequency from the list and then update the calendar
 
-    return
     # update the calendar                                          2 : maintain sort
 
     # result_datetime = datetime(2019, 5, 1, 15, 00)               3
